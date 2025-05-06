@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hospital Information Chatbot</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f7f7f7;
+            margin: 0;
+            padding: 0;
+        }
+        .chat-container {
+            width: 100%;
+            max-width: 600px;
+            margin: 20px auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .chat-box {
+            width: 100%;
+            height: 400px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 10px;
+            background-color: #f9f9f9;
+            overflow-y: auto;
+        }
+        .input-box {
+            display: flex;
+            margin-top: 10px;
+        }
+        .input-box input {
+            width: 80%;
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        .input-box button {
+            width: 18%;
+            padding: 10px;
+            background-color: #007bff;
+            border: none;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        .input-box button:hover {
+            background-color: #0056b3;
+        }
+        .message {
+            padding: 8px 12px;
+            margin: 5px;
+            border-radius: 5px;
+        }
+        .user-message {
+            background-color: #d1e7ff;
+            text-align: right;
+        }
+        .bot-message {
+            background-color: #e0e0e0;
+            text-align: left;
+        }
+    </style>
+</head>
+<body>
+
+<div class="chat-container">
+    <h2>Hospital Information Chatbot</h2>
+    <div class="chat-box" id="chat-box">
+        <!-- Messages will appear here -->
+    </div>
+
+    <div class="input-box">
+        <input type="text" id="user-input" placeholder="Ask about hospital information..." />
+        <button onclick="sendMessage()">Send</button>
+    </div>
+</div>
+
+<script>
+    // Sample hospital information data
+    const hospitalInfo = {
+        'doctors': [
+            {'name': 'Dr. John Doe', 'specialty': 'Cardiologist', 'contact': '123-456-7890'},
+            {'name': 'Dr. Jane Smith', 'specialty': 'Neurologist', 'contact': '987-654-3210'},
+            {'name': 'Dr. Emily White', 'specialty': 'Orthopedic Surgeon', 'contact': '456-789-0123'}
+        ],
+        'departments': [
+            'Cardiology', 'Neurology', 'Orthopedics', 'Pediatrics', 'General Surgery'
+        ],
+        'contact': {
+            'phone': '555-123-4567',
+            'email': 'contact@hospital.com',
+            'address': '123 Main Street, Hospital City'
+        }
+    };
+
+    // Function to display the chat message
+    function displayMessage(message, sender) {
+        const chatBox = document.getElementById('chat-box');
+        const messageElement = document.createElement('div');
+        messageElement.classList.add('message');
+        messageElement.classList.add(sender === 'user' ? 'user-message' : 'bot-message');
+        messageElement.textContent = message;
+        chatBox.appendChild(messageElement);
+        chatBox.scrollTop = chatBox.scrollHeight; // Scroll to the bottom
+    }
+
+    // Function to send the user's message and receive a response
+    function sendMessage() {
+        const userInput = document.getElementById('user-input').value.trim();
+        if (userInput === '') return;
+
+        // Display the user's message
+        displayMessage(userInput, 'user');
+
+        // Process the user's input and generate a bot response
+        const botResponse = getBotResponse(userInput);
+
+        // Display the bot's response after a short delay
+        setTimeout(() => {
+            displayMessage(botResponse, 'bot');
+        }, 500);
+
+        // Clear the input box
+        document.getElementById('user-input').value = '';
+    }
+
+    // Function to generate bot responses based on the user's message
+    function getBotResponse(input) {
+        const lowerInput = input.toLowerCase();
+
+        if (lowerInput.includes('doctor') || lowerInput.includes('doctors')) {
+            return getDoctorsInfo();
+        } else if (lowerInput.includes('department') || lowerInput.includes('departments')) {
+            return getDepartmentsInfo();
+        } else if (lowerInput.includes('contact') || lowerInput.includes('phone') || lowerInput.includes('email')) {
+            return getContactInfo();
+        } else {
+            return "Sorry, I didn't understand. You can ask about doctors, departments, or contact information.";
+        }
+    }
+
+    // Function to get doctors' information
+    function getDoctorsInfo() {
+        let response = 'Here are some of our doctors:\n';
+        hospitalInfo.doctors.forEach(doctor => {
+            response += `${doctor.name} - ${doctor.specialty} - Contact: ${doctor.contact}\n`;
+        });
+        return response;
+    }
+
+    // Function to get departments information
+    function getDepartmentsInfo() {
+        return 'Our hospital has the following departments: ' + hospitalInfo.departments.join(', ') + '.';
+    }
+
+    // Function to get contact information
+    function getContactInfo() {
+        const contact = hospitalInfo.contact;
+        return `You can reach us at:\nPhone: ${contact.phone}\nEmail: ${contact.email}\nAddress: ${contact.address}`;
+    }
+</script>
+
+</body>
+</html>
+
