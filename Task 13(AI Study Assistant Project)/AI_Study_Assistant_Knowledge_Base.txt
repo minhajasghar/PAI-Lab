@@ -1,0 +1,46 @@
+
+AI Study Assistant Knowledge Base
+=================================
+
+1. What is Artificial Intelligence?
+Artificial Intelligence (AI) is the branch of computer science that aims to create machines that can perform tasks that typically require human intelligence.
+
+2. Types of AI:
+- Narrow AI: AI systems that are trained to perform a single task (e.g., voice assistants).
+- General AI: A type of AI that can perform any intellectual task a human can do.
+- Super AI: Hypothetical AI that surpasses human intelligence in all aspects.
+
+3. Applications of AI:
+- Natural Language Processing (NLP)
+- Image Recognition
+- Autonomous Vehicles
+- Robotics
+- Expert Systems
+
+4. What is Machine Learning?
+Machine Learning is a subset of AI that enables systems to learn from data and improve from experience without being explicitly programmed.
+
+5. Types of Machine Learning:
+- Supervised Learning
+- Unsupervised Learning
+- Reinforcement Learning
+
+6. What is Deep Learning?
+Deep Learning is a subset of Machine Learning that uses neural networks with many layers to analyze various factors of data.
+
+7. What is NLP?
+Natural Language Processing (NLP) is a field of AI that gives machines the ability to read, understand, and derive meaning from human languages.
+
+8. Frequently Asked Questions:
+
+Q: How is AI used in everyday life?
+A: Through smartphones, recommendation systems, smart home devices, etc.
+
+Q: What is the Turing Test?
+A: A test to determine if a machine's behavior is indistinguishable from a human.
+
+Q: What are neural networks?
+A: A set of algorithms modeled loosely after the human brain, designed to recognize patterns.
+
+Q: Difference between AI and ML?
+A: AI is the broader concept of machines being able to carry out tasks smartly. ML is a subset of AI focused on learning from data.
