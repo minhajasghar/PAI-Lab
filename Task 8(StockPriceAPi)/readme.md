@@ -21,3 +21,4 @@ This is a simple Python application that fetches and displays real-time stock pr
 ## 🚀 How to Run
 
 1. Clone this repository:
+git clone https://github.com/minhajasghar/pai-lab.git
